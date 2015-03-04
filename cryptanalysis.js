@@ -1,7 +1,7 @@
 "strict";
-
-var cypher = require("./cypher.js");
-var puts = cypher.puts;
+var cypher = require('./cypher.js');
+var utils = require('./shared_utils.js');
+var puts = utils.puts;
 
 function offsetTextWithSelf(text, offset) {
   offset = offset || 1;
