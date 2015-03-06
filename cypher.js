@@ -20,6 +20,7 @@ function applyMapToText(text, map){
   return result;
 }
 
+// AKA Caesar Cipher
 function applyOffsetToText(text, offset){
   var result = "";
   for(var index in text) {
@@ -52,6 +53,7 @@ function indexedPolyalphabeticDecypher(text) {
 }
 
 // Apply a key using modulo arithmatic.
+// Repeat the key as necessary.
 // This is an implementation of the Vigenère cipher.
 function moduloCypherTextWithKey(text, key) {
   var result = "";
@@ -73,16 +75,20 @@ function makeMapping(map) {
 }
 
 function addLetters(a, b) {
-  var numA = (typeof a === "number") ? a : tables.alphaIndex[a];
-  var numB = (typeof b === "number") ? b : tables.alphaIndex[b];
-  // Create output like "( 14 + -3 ) % 26 = 11"
-//  puts(
-//    "( " +
-//    originalLetterValue + " + " +
-//    offset + " ) % " +
-//    alphaLength + " = " +
-//    letterValue);
-  var letterValue = utils.positiveModulo((numA + numB), tables.identityMap.length);
+  return modularLetterOperation(a, b, function(x, y){return x + y;});
+}
+
+function subtractLetters(a, b) {
+  return modularLetterOperation(a, b, function(x, y){return x - y;});
+}
+
+function modularLetterOperation(a, b, operation) {
+  
+  var a = (typeof a === "number") ? a : tables.alphaIndex[a];
+  var b = (typeof b === "number") ? b : tables.alphaIndex[b];
+  
+  var rawCombinedValue = operation(a, b);
+  var letterValue = utils.positiveModulo(rawCombinedValue, tables.identityMap.length);
   return tables.identityMap[letterValue];
 }
 
@@ -91,6 +97,7 @@ exports.normalizeText = normalizeText;
 exports.moduloCypherTextWithKey = moduloCypherTextWithKey;
 exports.applyMapToText = applyMapToText;
 exports.addLetters = addLetters;
+exports.subtractLetters = subtractLetters;
 exports.applyOffsetToText = applyOffsetToText;
 exports.indexedPolyalphabeticCypher = indexedPolyalphabeticCypher;
 exports.indexedPolyalphabeticDecypher = indexedPolyalphabeticDecypher;

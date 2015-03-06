@@ -1,7 +1,6 @@
 "strict";
 var tables = require('./tables.js');
 var cypher = require('./cypher.js');
-var experimental = require('./experimental.js');
 var utils = require('./shared_utils.js');
 var puts = utils.puts;
 var header = utils.header;
@@ -33,6 +32,10 @@ puts();
 puts("a offset 0: " + cypher.addLetters("a", 0));
 puts("a offset 1: " + cypher.addLetters("a", 1));
 puts("z offset 1: " + cypher.addLetters("z", 1));
+puts();
+puts("z - z: " + cypher.subtractLetters("z", "z"));
+puts("z - a: " + cypher.subtractLetters("z", "a"));
+puts("z - n: " + cypher.subtractLetters("z", "n"));
 
 header("Caesar Ciphers:\nmonoalphabetic shifted alphabet simple substitution ciphers");
 
@@ -72,7 +75,5 @@ puts("Message: " + message);
 puts(cypher.moduloCypherTextWithKey(message, key));
 // TODO: decypher Vigenère Cyphers
 
-header("Key Extender");
-puts(experimental.keyExtender("abcdefghij"));
-puts(experimental.keyExtender("epsnkfeosd"));
+
 
