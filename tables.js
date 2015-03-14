@@ -1,5 +1,9 @@
 "strict";
 
+//           11 1111111222222
+//0123456789012 3456789012345
+//abcdefghijklm nopqrstuvwxyz
+
 // This accomodates both lower and uppercase,
 // so text doesn't have to be normalized as much.
 exports.alphaIndex = {
@@ -14,3 +18,4 @@ exports.rot13map = [
 
 exports.identityMap = [
   'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+

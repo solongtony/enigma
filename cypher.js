@@ -3,10 +3,6 @@ var tables = require('./tables.js');
 var utils = require('./shared_utils.js');
 var puts = utils.puts;
 
-//           11 1111111222222
-//0123456789012 3456789012345
-//abcdefghijklm nopqrstuvwxyz
-
 // TODO: consolodate applyMap and applyOffset by checking if the input is a number, hash, or function.  (If it's a function, assume it maps a single letter.)
 
 function applyMapToText(text, map){
@@ -21,15 +17,21 @@ function applyMapToText(text, map){
 }
 
 // AKA Caesar Cipher
-function applyOffsetToText(text, offset){
+// AKA Shift Cipher
+// http://en.wikipedia.org/wiki/Caesar_cipher
+// http://practicalcryptography.com/ciphers/caesar-cipher/
+function applyShiftToText(text, offset){
   var result = "";
   for(var index in text) {
     var letter = text[index];
-    result += addLetters(letter, offset);
+    result += utils.addLetters(letter, offset);
   }
   return result;
 }
 
+// AKA Vigenère Cipher
+// http://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
+// http://practicalcryptography.com/ciphers/vigenere-gronsfeld-and-autokey-cipher/
 function indexedPolyalphabeticCypher(text) {
   var result = "";
   for(var index in text) {
@@ -37,7 +39,7 @@ function indexedPolyalphabeticCypher(text) {
     //puts("index typeof index: " + index + " " + typeof index);
     // 'index' is a String!
     // "+" converts index into a number.
-    var offsetLetter = addLetters(letter, +index);
+    var offsetLetter = utils.addLetters(letter, +index);
     result += offsetLetter;
   }
   return result;
@@ -47,7 +49,7 @@ function indexedPolyalphabeticDecypher(text) {
   var result = "";
   for(var index in text) {
     var letter = text[index];
-    result += addLetters(letter, -1 * index);
+    result += utils.addLetters(letter, -1 * index);
   }
   return result;
 }
@@ -59,7 +61,7 @@ function moduloCypherTextWithKey(text, key) {
   var result = "";
   for(var textIndex in text) {
     keyIndex = textIndex % key.length;
-    result += addLetters(text[textIndex], key[keyIndex]);
+    result += utils.addLetters(text[textIndex], key[keyIndex]);
   }
   return result;
 }
@@ -74,31 +76,11 @@ function makeMapping(map) {
   };
 }
 
-function addLetters(a, b) {
-  return modularLetterOperation(a, b, function(x, y){return x + y;});
-}
-
-function subtractLetters(a, b) {
-  return modularLetterOperation(a, b, function(x, y){return x - y;});
-}
-
-function modularLetterOperation(a, b, operation) {
-  
-  var a = (typeof a === "number") ? a : tables.alphaIndex[a];
-  var b = (typeof b === "number") ? b : tables.alphaIndex[b];
-  
-  var rawCombinedValue = operation(a, b);
-  var letterValue = utils.positiveModulo(rawCombinedValue, tables.identityMap.length);
-  return tables.identityMap[letterValue];
-}
-
 // TODO: put exports inline
 exports.normalizeText = normalizeText;
 exports.moduloCypherTextWithKey = moduloCypherTextWithKey;
 exports.applyMapToText = applyMapToText;
-exports.addLetters = addLetters;
-exports.subtractLetters = subtractLetters;
-exports.applyOffsetToText = applyOffsetToText;
+exports.applyShiftToText = applyShiftToText;
 exports.indexedPolyalphabeticCypher = indexedPolyalphabeticCypher;
 exports.indexedPolyalphabeticDecypher = indexedPolyalphabeticDecypher;
 

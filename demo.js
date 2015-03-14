@@ -2,6 +2,8 @@
 var tables = require('./tables.js');
 var cypher = require('./cypher.js');
 var utils = require('./shared_utils.js');
+var addLetters = utils.addLetters;
+var subtractLetters = utils.subtractLetters;
 var puts = utils.puts;
 var header = utils.header;
 
@@ -25,17 +27,17 @@ decypheredText = cypher.applyMapToText(cypherText, tables.rot13map);
 puts(decypheredText);
 
 header("Adding Letters, and Letter offsets");
-puts("a + a: " + cypher.addLetters("a", "a"));
-puts("a + z: " + cypher.addLetters("a", "z"));
-puts("z + z: " + cypher.addLetters("z", "z"));
+puts("a + a: " + addLetters("a", "a"));
+puts("a + z: " + addLetters("a", "z"));
+puts("z + z: " + addLetters("z", "z"));
 puts();
-puts("a offset 0: " + cypher.addLetters("a", 0));
-puts("a offset 1: " + cypher.addLetters("a", 1));
-puts("z offset 1: " + cypher.addLetters("z", 1));
+puts("a offset 0: " + addLetters("a", 0));
+puts("a offset 1: " + addLetters("a", 1));
+puts("z offset 1: " + addLetters("z", 1));
 puts();
-puts("z - z: " + cypher.subtractLetters("z", "z"));
-puts("z - a: " + cypher.subtractLetters("z", "a"));
-puts("z - n: " + cypher.subtractLetters("z", "n"));
+puts("z - z: " + subtractLetters("z", "z"));
+puts("z - a: " + subtractLetters("z", "a"));
+puts("z - n: " + subtractLetters("z", "n"));
 
 header("Caesar Ciphers:\nmonoalphabetic shifted alphabet simple substitution ciphers");
 
@@ -74,6 +76,4 @@ var message = "ATTACKATDAWN";
 puts("Message: " + message);
 puts(cypher.moduloCypherTextWithKey(message, key));
 // TODO: decypher Vigenère Cyphers
-
-
 
