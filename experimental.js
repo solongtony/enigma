@@ -49,7 +49,7 @@ function keyExtender(key) {
   
   for(var keyletIndex in keylets) {
     puts(result + " " + keylets[keyletIndex]);
-    result = cypher.moduloCypherTextWithKey(result, keylets[keyletIndex]);
+    result = cypher.vigenere.encypher(result, keylets[keyletIndex]);
   }
   
   return result;

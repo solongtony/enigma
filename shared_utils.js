@@ -4,6 +4,38 @@ var tables = require('./tables');
 
 var utils = {
 
+
+normalizeText: function(text){
+  return text.replace(/ /g,'').toLowerCase();
+},
+
+makeMapping: function(map) {
+  return function(letter) {
+    return map[tables.alphaIndex[letter]];
+  };
+},
+
+// TODO: consolodate applyMap and applyOffset by checking if the input is a number, hash, or function.  (If it's a function, assume it maps a single letter.)
+applyMapToText: function(text, map){
+  var result = "";
+  var applyMap = utils.makeMapping(map);
+  
+  for(var index in text) {
+    var letter = text[index];
+    result += applyMap(letter);
+  }
+  return result;
+},
+
+applyShiftToText: function(text, offset){
+  var result = "";
+  for(var index in text) {
+    var letter = text[index];
+    result += utils.addLetters(letter, offset);
+  }
+  return result;
+},
+
 addLetters: function (a, b) {
   return  utils.modularLetterOperation(a, b, function(x, y){return x + y;});
 },

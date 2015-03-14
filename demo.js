@@ -7,23 +7,22 @@ var subtractLetters = utils.subtractLetters;
 var puts = utils.puts;
 var header = utils.header;
 
-// Do Stuff!!
 
 var clearText, normalizedText, cypherText, decypheredText;
 
 clearText = "Hello World";
 puts(clearText);
 
-normalizedText = cypher.normalizeText(clearText);
+normalizedText = utils.normalizeText(clearText);
 puts(normalizedText);
 
-header("rot13 map");
+header("Rot13 by Mapping");
 puts(normalizedText);
 
-cypherText = cypher.applyMapToText(normalizedText, tables.rot13map);
+cypherText = utils.applyMapToText(normalizedText, tables.rot13map);
 puts(cypherText);
 
-decypheredText = cypher.applyMapToText(cypherText, tables.rot13map);
+decypheredText = utils.applyMapToText(cypherText, tables.rot13map);
 puts(decypheredText);
 
 header("Adding Letters, and Letter offsets");
@@ -39,32 +38,32 @@ puts("z - z: " + subtractLetters("z", "z"));
 puts("z - a: " + subtractLetters("z", "a"));
 puts("z - n: " + subtractLetters("z", "n"));
 
-header("Caesar Ciphers:\nmonoalphabetic shifted alphabet simple substitution ciphers");
+header("Caesar Cipher:\nmonoalphabetic shifted alphabet simple substitution cipher");
 
-puts("ROT13 index");
+header("ROT13 by Shifting");
 puts(normalizedText);
 
-cypherText = cypher.applyOffsetToText(normalizedText, 13);
+cypherText = utils.applyShiftToText(normalizedText, 13);
 puts(cypherText);
 
-decypheredText = cypher.applyOffsetToText(cypherText, 13);
+decypheredText = utils.applyShiftToText(cypherText, 13);
 puts(decypheredText);
 
-header("rotate by 2, 13 times");
+header("Rotate by 2, 13 Times");
 cypherText = normalizedText;
 puts(cypherText);
 for(var i = 0; i < 13; i++) {
-  cypherText = cypher.applyOffsetToText(cypherText, 2);
+  cypherText = utils.applyShiftToText(cypherText, 2);
   puts(cypherText);
 }
 
-puts("\nindexed Polyalphabetic Cypher");
+header("Indexed Polyalphabetic Cypher");
 puts(normalizedText);
 
-cypherText = cypher.indexedPolyalphabeticCypher(normalizedText);
+cypherText = cypher.indexedPolyalphabetic.encypher(normalizedText);
 puts(cypherText);
 
-decypheredText = cypher.indexedPolyalphabeticDecypher(cypherText);
+decypheredText = cypher.indexedPolyalphabetic.decypher(cypherText);
 puts(decypheredText);
 
 header("Vigenère Cypher");
@@ -74,6 +73,8 @@ var key = "LEMON";
 puts("Key: " + key);
 var message = "ATTACKATDAWN";
 puts("Message: " + message);
-puts(cypher.moduloCypherTextWithKey(message, key));
-// TODO: decypher Vigenère Cyphers
+cypherText = cypher.vigenere.encypher(message, key);
+puts(cypherText);
+decypheredText = cypher.vigenere.decypher(cypherText, key);
+puts(decypheredText);
 
