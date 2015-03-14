@@ -9,6 +9,10 @@ normalizeText: function(text){
   return text.replace(/ /g,'').toLowerCase();
 },
 
+reverse: function(text) {
+    return text.split('').reverse().join('');
+},
+
 makeMapping: function(map) {
   return function(letter) {
     return map[tables.alphaIndex[letter]];
