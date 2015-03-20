@@ -6,7 +6,8 @@ var utils = require('./shared_utils.js');
 var puts = utils.puts;
 var header = utils.header;
 
-// Original Research
+// Original Ideas
+
 // Given a key, build a longer key.
 // Break the key into segments of prime length.
 // Apply each segment as a key.
