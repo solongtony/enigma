@@ -38,7 +38,8 @@ puts("Count 'z's in message: " + countLetter("z", message));
 header("Index of coincedence");
 message = "abcdefg";
 puts("ioc of " + message + " and " + message + ": " + indexOfCoincedence(message, message));
-puts("ioc of " + message + " and " + utils.reverse(message) + ": " + indexOfCoincedence(message, utils.reverse(message)));
+puts("ioc of " + message + " and " + utils.reverse(message) + ": "
+	+ indexOfCoincedence(message, utils.reverse(message)));
 message = "abcdefgh";
-puts("ioc of " + message + " and " + utils.reverse(message) + ": " + indexOfCoincedence(message, utils.reverse(message)));
-
+puts("ioc of " + message + " and " + utils.reverse(message) + ": "
+	+ indexOfCoincedence(message, utils.reverse(message)));
