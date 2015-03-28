@@ -1,6 +1,6 @@
 "strict";
 var cryptanalysis = require('./cryptanalysis.js');
-var rotateText = cryptanalysis.rotateText;
+var shiftTextWithWrap = cryptanalysis.shiftTextWithWrap;
 var offsetTextWithSelf = cryptanalysis.offsetTextWithSelf;
 var countLetter = cryptanalysis.countLetter;
 var indexOfCoincedence = cryptanalysis.indexOfCoincedence;
@@ -13,13 +13,13 @@ var message = "abcde";
 puts("message " + message);
 
 header("Rotate text");
-puts("rotate 1: " + rotateText(message));
-puts("rotate 2: " + rotateText(message, 2));
-puts("rotate 3: " + rotateText(message, 3));
-puts("rotate 4: " + rotateText(message, 4));
-puts("rotate 5: " + rotateText(message, 5));
-puts("rotate 6: " + rotateText(message, 6));
-puts("rotate 7: " + rotateText(message, 7));
+puts("rotate 1: " + shiftTextWithWrap(message));
+puts("rotate 2: " + shiftTextWithWrap(message, 2));
+puts("rotate 3: " + shiftTextWithWrap(message, 3));
+puts("rotate 4: " + shiftTextWithWrap(message, 4));
+puts("rotate 5: " + shiftTextWithWrap(message, 5));
+puts("rotate 6: " + shiftTextWithWrap(message, 6));
+puts("rotate 7: " + shiftTextWithWrap(message, 7));
 
 header("Offset Text With Self");
 puts("abcde = 01234");
