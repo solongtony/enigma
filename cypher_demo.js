@@ -1,4 +1,4 @@
-"strict";
+"use strict";
 //var tables = require('./tables.js');
 var cypher = require('./cypher.js');
 var utils = require('./shared_utils.js');

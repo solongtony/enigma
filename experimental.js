@@ -1,4 +1,4 @@
-"strict";
+"use strict";
 var tables = require('./tables.js');
 var cypher = require('./cypher.js');
 var cryptanalysis = require('./cryptanalysis.js');
@@ -25,34 +25,34 @@ function keyExtender(key) {
   var primeIndex = 0;
   var keyIndex = 0;
   var keylets = [];
-  
+
   // Bail out if the key isn't long enough for
   // the algorithm.
   if(key.length < 5) return key;
-  
+
   // Break the key into substrings.
-  
+
   while(
         primeIndex < primes.length &&
         keyIndex + primes[primeIndex] <= key.length) {
-      
+
     keylets[keylets.length] = key.substring(
       keyIndex,
       keyIndex += primes[primeIndex]);
     ++primeIndex;
   }
-  
+
   // Buld a longer key by repeatedly applying each keylet.
-  
+
   var extendedKeyLength = primeProducts[primeIndex];
   // "A" is the identity.
   var result = Array(extendedKeyLength+1).join("A");
-  
+
   for(var keyletIndex in keylets) {
     puts(result + " " + keylets[keyletIndex]);
     result = cypher.vigenere.encypher(result, keylets[keyletIndex]);
   }
-  
+
   return result;
 }
 
@@ -68,4 +68,3 @@ var extendedKey = keyExtender(key);
 puts("extended key: " + extendedKey);
 
 // TODO: analyze the extended key for patterns.
-

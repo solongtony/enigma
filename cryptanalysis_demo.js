@@ -1,4 +1,4 @@
-"strict";
+"use strict";
 var cryptanalysis = require('./cryptanalysis.js');
 var shiftTextWithWrap = cryptanalysis.shiftTextWithWrap;
 var offsetTextWithSelf = cryptanalysis.offsetTextWithSelf;

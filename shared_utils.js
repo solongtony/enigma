@@ -1,4 +1,4 @@
-"strict";
+"use strict";
 
 var tables = require('./tables');
 
@@ -22,7 +22,7 @@ var utils = {
   applyMapToText: function(text, map){
     var result = "";
     var applyMap = utils.makeMapping(map);
-    
+
     for(var index in text) {
       var letter = text[index];
       result += applyMap(letter);
@@ -48,10 +48,10 @@ var utils = {
   },
 
   modularLetterOperation: function(a, b, operation) {
-    
+
     var a = (typeof a === "number") ? a : tables.alphaIndex[a];
     var b = (typeof b === "number") ? b : tables.alphaIndex[b];
-    
+
     var rawCombinedValue = operation(a, b);
     var letterValue = utils.positiveModulo(rawCombinedValue, tables.identityMap.length);
     return tables.identityMap[letterValue];

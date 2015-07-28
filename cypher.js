@@ -1,4 +1,4 @@
-"strict";
+"use strict";
 var tables = require('./tables.js');
 var utils = require('./shared_utils.js');
 var puts = utils.puts;
