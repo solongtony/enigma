@@ -19,12 +19,13 @@ caesar: {
 indexedPolyalphabetic: {
   encypher: function(text) {
     var result = "";
-    for(var index in text) {
-      var letter = text[index];
+    var index, letter, offsetLetter;
+    for(index in text) {
+      letter = text[index];
       //puts("index typeof index: " + index + " " + typeof index);
       // 'index' is a String!
       // "+" converts index into a number.
-      var offsetLetter = utils.addLetters(letter, +index);
+      offsetLetter = utils.addLetters(letter, +index);
       result += offsetLetter;
     }
     return result;
@@ -32,8 +33,9 @@ indexedPolyalphabetic: {
 
   decypher: function(text) {
     var result = "";
-    for(var index in text) {
-      var letter = text[index];
+    var index, letter;
+    for(index in text) {
+      letter = text[index];
       result += utils.addLetters(letter, -1 * index);
     }
     return result;
@@ -51,15 +53,18 @@ vigenere: {
   //   Re-write usin a generic zip function.
   encypher: function(text, key) {
     var result = "";
-    for(var textIndex in text) {
+    var textIndex, keyIndex;
+    for(textIndex in text) {
       keyIndex = textIndex % key.length;
       result += utils.addLetters(text[textIndex], key[keyIndex]);
     }
     return result;
   },
+
   decypher: function(text, key) {
     var result = "";
-    for(var textIndex in text) {
+    var textIndex, keyIndex;
+    for(textIndex in text) {
       keyIndex = textIndex % key.length;
       result += utils.subtractLetters(text[textIndex], key[keyIndex]);
     }

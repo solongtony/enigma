@@ -1,10 +1,10 @@
 "use strict";
-var cryptanalysis = require('./cryptanalysis.js');
+var cryptanalysis = require('../src/cryptanalysis.js');
 var shiftTextWithWrap = cryptanalysis.shiftTextWithWrap;
 var offsetTextWithSelf = cryptanalysis.offsetTextWithSelf;
 var countLetter = cryptanalysis.countLetter;
 var indexOfCoincedence = cryptanalysis.indexOfCoincedence;
-var utils = require('./shared_utils.js');
+var utils = require('../src/shared_utils.js');
 var puts = utils.puts;
 var header = utils.header;
 

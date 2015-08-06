@@ -1,6 +1,6 @@
 "use strict";
-var tables = require('./tables.js');
-var utils = require('./shared_utils.js');
+var tables = require('../src/tables.js');
+var utils = require('../src/shared_utils.js');
 var addLetters = utils.addLetters;
 var subtractLetters = utils.subtractLetters;
 var puts = utils.puts;

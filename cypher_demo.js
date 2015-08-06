@@ -1,7 +1,7 @@
 "use strict";
 //var tables = require('./tables.js');
-var cypher = require('./cypher.js');
-var utils = require('./shared_utils.js');
+var cypher = require('../src/cypher.js');
+var utils = require('../src/shared_utils.js');
 var addLetters = utils.addLetters;
 var subtractLetters = utils.subtractLetters;
 var puts = utils.puts;
