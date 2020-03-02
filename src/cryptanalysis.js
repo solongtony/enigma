@@ -1,7 +1,7 @@
 "use strict";
 var cypher = require('./cypher.js');
 var utils = require('./shared_utils.js');
-var puts = utils.puts;
+var print = utils.print;
 var header = utils.header;
 
 var cryptanalysis = {

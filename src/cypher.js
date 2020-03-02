@@ -1,7 +1,7 @@
 "use strict";
 var tables = require('./tables.js');
 var utils = require('./shared_utils.js');
-var puts = utils.puts;
+var print = utils.print;
 
 
 var cypher = {
@@ -22,7 +22,7 @@ indexedPolyalphabetic: {
     var index, letter, offsetLetter;
     for(index in text) {
       letter = text[index];
-      //puts("index typeof index: " + index + " " + typeof index);
+      //print("index typeof index: " + index + " " + typeof index);
       // 'index' is a String!
       // "+" converts index into a number.
       offsetLetter = utils.addLetters(letter, +index);

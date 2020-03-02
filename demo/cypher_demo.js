@@ -4,7 +4,7 @@ var cypher = require('../src/cypher.js');
 var utils = require('../src/shared_utils.js');
 var addLetters = utils.addLetters;
 var subtractLetters = utils.subtractLetters;
-var puts = utils.puts;
+var print = utils.print;
 var header = utils.header;
 
 header("cypher demo");
@@ -12,28 +12,28 @@ header("cypher demo");
 var clearText, normalizedText, cypherText, decypheredText;
 
 clearText = "Hello World";
-puts(clearText);
+print(clearText);
 
 normalizedText = utils.normalizeText(clearText);
-puts(normalizedText);
+print(normalizedText);
 
 header("Indexed Polyalphabetic Cypher");
-puts(normalizedText);
+print(normalizedText);
 
 cypherText = cypher.indexedPolyalphabetic.encypher(normalizedText);
-puts(cypherText);
+print(cypherText);
 
 decypheredText = cypher.indexedPolyalphabetic.decypher(cypherText);
-puts(decypheredText);
+print(decypheredText);
 
 header("Vigenère Cypher");
 // Example from
 // http://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
 var key = "LEMON";
-puts("Key: " + key);
+print("Key: " + key);
 var message = "ATTACKATDAWN";
-puts("Message: " + message);
+print("Message: " + message);
 cypherText = cypher.vigenere.encypher(message, key);
-puts(cypherText);
+print(cypherText);
 decypheredText = cypher.vigenere.decypher(cypherText, key);
-puts(decypheredText);
+print(decypheredText);

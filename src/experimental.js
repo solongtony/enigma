@@ -3,7 +3,7 @@ var tables = require('./tables.js');
 var cypher = require('./cypher.js');
 var cryptanalysis = require('./cryptanalysis.js');
 var utils = require('./shared_utils.js');
-var puts = utils.puts;
+var print = utils.print;
 var header = utils.header;
 
 // Original Ideas
@@ -49,7 +49,7 @@ function keyExtender(key) {
   var result = Array(extendedKeyLength+1).join("A");
 
   for(var keyletIndex in keylets) {
-    puts(result + " " + keylets[keyletIndex]);
+    print(result + " " + keylets[keyletIndex]);
     result = cypher.vigenere.encypher(result, keylets[keyletIndex]);
   }
 
@@ -59,12 +59,12 @@ function keyExtender(key) {
 header("Key Extender");
 
 var key = "abcdefghij";
-puts("key: "+ key);
-puts("extended key: " + keyExtender(key));
-puts("Note the extended key isn't very random, because the input key isn't very random.");
+print("key: "+ key);
+print("extended key: " + keyExtender(key));
+print("Note the extended key isn't very random, because the input key isn't very random.");
 key = "epsnkfeosd";
-puts("key: "+ key);
+print("key: "+ key);
 var extendedKey = keyExtender(key);
-puts("extended key: " + extendedKey);
+print("extended key: " + extendedKey);
 
 // TODO: analyze the extended key for patterns.

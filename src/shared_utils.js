@@ -63,9 +63,9 @@ var utils = {
     return result;
   },
 
-  puts: function(text){console.log(text||'');},
+  print: function(text){console.log(text||'');},
 
-  header: function(text){utils.puts('\n'+text+'\n');}
+  header: function(text){utils.print('\n'+text+'\n');}
 
 }
 
