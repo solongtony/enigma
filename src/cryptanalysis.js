@@ -4,6 +4,10 @@ var utils = require('./shared_utils.js');
 var print = utils.print;
 var header = utils.header;
 
+// Tools and techniques for examening and ultimately cracking encyphered text.
+// Focus is on historically significant techniques, although modern techniques
+// for analyzing historic cyphers may be included.
+
 var cryptanalysis = {
   offsetTextWithSelf: function(text, offset) {
     offset = offset || 1;

@@ -4,8 +4,11 @@ var tables = require('./tables');
 
 var utils = {
 
+  // Normalize text before applying any cypher.
+  // Remove all whitespace.
+  // Use all lowercase letters.
   normalizeText: function(text){
-    return text.replace(/ /g,'').toLowerCase();
+    return text.replace(/\s/g,'').toLowerCase();
   },
 
   reverse: function(text) {
@@ -18,7 +21,6 @@ var utils = {
     };
   },
 
-  // TODO: consolodate applyMap and applyOffset by checking if the input is a number, hash, or function.  (If it's a function, assume it maps a single letter.)
   applyMapToText: function(text, map){
     var result = "";
     var applyMap = utils.makeMapping(map);

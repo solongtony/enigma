@@ -1,5 +1,7 @@
 "strict";
 
+// Some pre-defined character tables.
+
 //           11 1111111222222
 //0123456789012 3456789012345
 //abcdefghijklm nopqrstuvwxyz
@@ -12,10 +14,9 @@ exports.alphaIndex = {
   o:14, O:14, p:15, P:15, q:16, Q:16, r:17, R:17, s:18, S:18, t:19, T:19,
   u:20, U:20, v:21, V:21, w:22, W:22, x:23, X:23, y:24, Y:24, z:25, Z:25 };
 
-// undefined => haqrsvarq
+// "undefined" => "haqrsvarq"
 exports.rot13map = [
   'n','o','p','q','r','s','t','u','v','w','x','y','z','a','b','c','d','e','f','g','h','i','j','k','l','m'];
 
 exports.identityMap = [
   'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-

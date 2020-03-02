@@ -3,6 +3,7 @@ var tables = require('./tables.js');
 var utils = require('./shared_utils.js');
 var print = utils.print;
 
+// Each of these Cypher implementations has an `encypher` and `decypher` method.
 
 var cypher = {
 
@@ -75,4 +76,3 @@ vigenere: {
 };
 
 module.exports = cypher;
-
