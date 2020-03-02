@@ -8,6 +8,7 @@ var utils = require('../src/shared_utils.js');
 var puts = utils.puts;
 var header = utils.header;
 
+header("cryptanalysis demo");
 
 var message = "abcde";
 puts("message " + message);

@@ -7,6 +7,7 @@ var subtractLetters = utils.subtractLetters;
 var puts = utils.puts;
 var header = utils.header;
 
+header("cypher demo");
 
 var clearText, normalizedText, cypherText, decypheredText;
 

@@ -6,6 +6,8 @@ var subtractLetters = utils.subtractLetters;
 var puts = utils.puts;
 var header = utils.header;
 
+header("utils demo");
+
 var clearText, normalizedText, cypherText, decypheredText;
 
 clearText = "Hello World";
@@ -54,3 +56,4 @@ for(var i = 0; i < 13; i++) {
   cypherText = utils.applyShiftToText(cypherText, 2);
   puts(cypherText);
 }
+puts()
