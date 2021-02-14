@@ -9,6 +9,7 @@ var cypher = {
 
 // Caesar Cipher
 // AKA Shift Cipher
+// The key is the number of places to shift.
 // http://en.wikipedia.org/wiki/Caesar_cipher
 // http://practicalcryptography.com/ciphers/caesar-cipher/
 caesar: {
@@ -47,6 +48,7 @@ indexedPolyalphabetic: {
 // Apply a key using modulo arithmatic.
 // Repeat the key as necessary.
 // http://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
+// The key is a string of characters.
 // http://practicalcryptography.com/ciphers/vigenere-gronsfeld-and-autokey-cipher/
 vigenere: {
   // TODO:
@@ -71,6 +73,14 @@ vigenere: {
     }
     return result;
   }
+}
+
+autokey: {
+  // This cypher uses a predefined lookup table.
+  // The defined "tabula recta" just defines a modulo shift operation, so the table isn't actually needed.
+  // An arbitrary table could be used instead.
+  // The steps of the cypher are more complicated than the Vigenère-Gronsfeld cypher,
+  // and it is considered more secure.
 }
 
 };
